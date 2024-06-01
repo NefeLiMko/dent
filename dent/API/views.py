@@ -14,8 +14,9 @@ from parsers.models import ProductModel, FileModel
 from django.http import Http404, HttpResponseNotFound
 from rest_framework.response import Response
 from .handlers import xls_handler
+import dent.settings as settings
 import json
-
+import os
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
@@ -25,7 +26,7 @@ class SearchView(views.View):
         print(slug)
         out = []
         if slug:
-            filename = f"out_data_{slug}.json"
+            filename = os.path.join(settings.MEDIA_ROOT, "data", f"out_data_{slug}.json")
             with open(filename, "r", encoding='utf8') as input_json:
                 json_data = json.load(input_json)
                 for key in json_data:
