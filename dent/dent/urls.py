@@ -22,9 +22,12 @@ router.register(r'products', views.ProductViewSet)
 
 
 
+
 urlpatterns = [
+    path('',  views.SearchView.as_view(), name='search'),
     path('api/', include(router.urls)),
     path('search/<str:art>', views.ProductsToFind.as_view()),
+    path('upload/', views.HandleXLS.as_view(), name="upload"),
     path('d/<str:sl>', views.dups),
     path('admin/', admin.site.urls),
 ]

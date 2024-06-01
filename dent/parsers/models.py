@@ -1,5 +1,5 @@
 from django.db import models
-
+from .checker import ContentTypeRestrictedFileField
 # Create your models here.
 
 SITE_CHOICES = [
@@ -19,3 +19,9 @@ class ProductModel(models.Model):
     def __str__(self) -> str:
         return f'{self.site} - {self.name} - {self.date}'
 
+class FileModel(models.Model):
+
+    file  = ContentTypeRestrictedFileField(upload_to='uploads/', content_types=['text/csv', 'text/xlsx' ],max_upload_size=5242880 ) 
+
+    def file_path(self):
+        return self.file

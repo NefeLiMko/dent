@@ -20,12 +20,12 @@ def start_wstorm():
     asyncio.run(item.main())
 
 if __name__ == '__main__':
-    #eldent = threading.Thread(target=start_eldent)
-    #aveldent = threading.Thread(target=start_aveldent)
+    eldent = threading.Thread(target=start_eldent)
+    aveldent = threading.Thread(target=start_aveldent)
     rocada = threading.Thread(target=start_rocada)
     #wstorm = threading.Thread(target=start_wstorm)
     
-    #eldent.start()
-    #aveldent.start()
+    eldent.start()
+    aveldent.start()
     rocada.start()
     #wstorm.start()

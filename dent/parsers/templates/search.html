@@ -1,0 +1,35 @@
+<html>
+    <style>
+        table, th, td {
+        border:1px solid black;
+        }
+    </style>
+    <head>
+
+    </head>
+    <body>
+        <div class="link_to_upload">
+            <a href="{% url 'upload' %}"> Upload File</a>
+        </div>
+        <table style="width: 100%;">
+            <tr>
+                <th>Артикул</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Источник</th>
+                <th>Дата</th>
+            </tr>
+            {%for key in data%}
+                <tr>
+                    <td>{{key.articul}}</td>
+                    <td>{{key.title}}</td>
+                    <td>{{key.price}}</td>
+                    <td>{{key.site}}</td>
+                    <td>{{key.date}}</td>
+                </tr>
+            {% endfor%}
+                
+        </table>
+        
+    </body>
+</html>

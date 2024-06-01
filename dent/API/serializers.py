@@ -10,3 +10,8 @@ class ProductSerializer(serializers.ModelSerializer):
         instance , created = ProductModel.objects.get_or_create(name=validated_data['name'], articul=validated_data['articul'], price=validated_data['price'], site=validated_data['site'] )
         
         return instance
+    
+
+class FileUploadSerializer(serializers.Serializer):
+
+    file = serializers.FileField(use_url=False)
